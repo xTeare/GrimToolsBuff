@@ -1,0 +1,16 @@
+{
+  "name": "GrimTools Buff",
+  "description": "Buffs the GrimTools website",
+  "version": "1.0", 
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["activeTab", "scripting", "storage"],
+
+  "content_scripts": [{
+    "js": ["content.js"],
+    "run_at": "document_end",
+    "matches": ["*://*.grimtools.com/db/*" ]
+  }]
+}
