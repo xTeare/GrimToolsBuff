@@ -8,9 +8,12 @@
   <body>
     <style>
       body{
-        width: 290px;
+        width: 270px;
+        height: 329px;
         background-color: #000;
         margin: 24px;
+        background-image: url(images/background.png);
+        background-size: cover;
       }
 
 
@@ -116,6 +119,14 @@
         z-index: -1000;
       }
 
+
+      .button-group{
+        position: fixed;
+        display: block;
+        height: 56px;
+        bottom: 24px;
+        width: inherit;
+      }
     </style>
 
     <div class="border-wrapper">
@@ -141,7 +152,10 @@
     <input type="checkbox" id="cb_fullscreenMode">
     <label for="cb_fullscreenMode">Fullscreen Mode</label>
 
-    <button id="reload" class="gd-button">Reload !</button>
+
+    <div class="button-group">
+      <button id="reload" class="gd-button">Reload !</button>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
