@@ -12,10 +12,10 @@
     "js": ["js/item-db.js"],
     "run_at": "document_end",
     "matches": ["*://*.grimtools.com/db/*" ]
-  },{
+  },
+  {
     "js": ["js/map.js"],
     "run_at": "document_end",
     "matches": ["*://*.grimtools.com/map/*" ]
-  }
-]
+  }]
 }

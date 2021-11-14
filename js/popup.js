@@ -1,6 +1,3 @@
-// Initialize button with user's preferred color
-let changeColor = document.getElementById("changeColor");
-
 const btn_Reload = document.getElementById("reload");
 const cb_mapHideSupport = document.getElementById("cb_mapHideSupport");
 const cb_itemHideSupport = document.getElementById("cb_itemHideSupport");
@@ -50,10 +47,8 @@ function saveSettings(){
 function reload(){
     chrome.tabs.query({active: true, highlighted: true},function(tab){
         tab.forEach(function(item, index, array) {
-            if(item.url != undefined){
-                if(item.url.includes("grimtools.com")){
-                    chrome.tabs.reload(item.id);
-                }
+            if(item.url != undefined && item.url.includes("grimtools.com")){
+                chrome.tabs.reload(item.id);
             }
           })
     });
@@ -74,7 +69,6 @@ function changeTab(tab, tabName) {
   
     document.getElementById(tabName).style.display = "block";
     tab.className += " active";
-
     settings["lastTab"] = tabName;
     saveSettings();
 }

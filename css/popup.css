@@ -39,24 +39,23 @@ html {
 }
 
 .input-group .tooltiptext {
-	transition: opacity 0.2s;
-	visibility: hidden;
+	width: 90%;
+	position: absolute;
+	padding: 8px 8px;
+	margin-left: 2%;
 	opacity: 0;
-	width: 120px;
-	background-color: black;
-	color: #a98c4e;
 	text-align: center;
 	font-size: 1rem;
-	border: 1px solid #a98c4e;
-	position: absolute;
+	visibility: hidden;
+	background-color: black;
+	color: #ab8d4e;
+	border: 1px solid #ab8d4e;
 	display: block;
 	z-index: 1;
 	float: inherit;
-	padding: 8px 8px;
-	width: 90%;
-	margin-left: 3%;
-	z-index: 22;
 	pointer-events: none;
+	transition: opacity 0.2s;
+	z-index: 22;
 }
 
 .input-group:hover .tooltiptext {

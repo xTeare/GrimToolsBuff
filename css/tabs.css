@@ -16,18 +16,18 @@
 	width: 109px;
 	height: 26px;
 	font-size: 1rem;
-	color: #a98c4e;
+	color: #ab8d4e;
 	transition: 0.05s;
-	background-image: url(../images/buttonlarge01_up.png);
+	background-image: url(../images/button_stashup.png);
 	background-size: cover;
 }
 
 .tab button:hover {
-	background-image: url(../images/buttonlarge01_over.png);
+	background-image: url(../images/button_stashover.png);
 }
 
 .tab button.active {
-	background-image: url(../images/buttonlarge01_down.png);
+	background-image: url(../images/button_stashdown.png);
 }
 
 .tabcontent {
