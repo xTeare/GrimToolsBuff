@@ -1,0 +1,82 @@
+.lt {
+	left: 0px;
+	top: 0px;
+	position: fixed;
+	float: left;
+	z-index: -1000;
+}
+
+
+.rt {
+	right: 0px;
+	top: 0px;
+	position: fixed;
+	float: left;
+	z-index: -1000;
+}
+
+.ct {
+	left: 8px;
+	right: 8px;
+	width: auto;
+	float: left;
+	position: fixed;
+	z-index: -1000;
+}
+
+.cb {
+	left: 8px;
+	right: 8px;
+	bottom: 0px;
+	width: auto;
+	float: left;
+	position: fixed;
+	z-index: -1000;
+}
+
+.lm {
+	left: 0px;
+	top: 8px;
+	width: 8px;
+	height: auto;
+	float: left;
+	position: fixed;
+	z-index: -1000;
+}
+
+.rm {
+	right: 0px;
+	top: 8px;
+	width: 8px;
+	height: auto;
+	float: left;
+	position: fixed;
+	z-index: -1000;
+}
+
+.rb {
+	right: 0px;
+	bottom: 0px;
+	position: fixed;
+	float: left;
+	z-index: -1000;
+}
+
+.lb {
+	left: 0px;
+	bottom: 0px;
+	position: fixed;
+	float: left;
+	z-index: -1000;
+}
+
+.rm {
+	right: 0px;
+	top: 8px;
+	bottom: 8px;
+	width: 8px;
+	height: auto;
+	position: fixed;
+	float: left;
+	z-index: -1000;
+}

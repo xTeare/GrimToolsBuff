@@ -1,0 +1,35 @@
+.tab {
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	width: fit-content;
+	margin-bottom: 8px;
+}
+
+.tab button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 109px;
+	height: 26px;
+	font-size: 1rem;
+	color: #a98c4e;
+	transition: 0.05s;
+	background-image: url(../images/buttonlarge01_up.png);
+	background-size: cover;
+}
+
+.tab button:hover {
+	background-image: url(../images/buttonlarge01_over.png);
+}
+
+.tab button.active {
+	background-image: url(../images/buttonlarge01_down.png);
+}
+
+.tabcontent {
+	display: none;
+}

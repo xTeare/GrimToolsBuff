@@ -1,0 +1,65 @@
+body {
+	padding: 12px;
+	background-image: url(../images/background.png);
+	/* background-size: contain; */
+}
+
+html {
+	width: 270px;
+	height: 329px;
+}
+
+.container {
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.border-wrapper {
+	float: left;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1000;
+}
+
+.button-group {
+	position: fixed;
+	width: 270px;
+	left: 0px;
+	bottom: 20px;
+}
+
+.input-group {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.input-group .tooltiptext {
+	transition: opacity 0.2s;
+	visibility: hidden;
+	opacity: 0;
+	width: 120px;
+	background-color: black;
+	color: #a98c4e;
+	text-align: center;
+	font-size: 1rem;
+	border: 1px solid #a98c4e;
+	position: absolute;
+	display: block;
+	z-index: 1;
+	float: inherit;
+	padding: 8px 8px;
+	width: 90%;
+	margin-left: 3%;
+	z-index: 22;
+	pointer-events: none;
+}
+
+.input-group:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}

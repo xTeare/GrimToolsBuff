@@ -1,0 +1,35 @@
+[type="checkbox"] {
+	position: relative;
+	left: 48px;
+	top: 0px;
+	z-index: 0;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+[type="checkbox"] + label {
+	position: relative;
+	display: block;
+	cursor: pointer;
+	font-family: sans-serif;
+	color: #a98c4e;
+	font-size: 1rem;
+	line-height: 1.5rem;
+	padding-left: 64px;
+	position: relative;
+	margin-bottom: 6px;
+}
+
+[type="checkbox"] + label:before {
+	width: 24px;
+	height: 24px;
+	background-image: url(../images/check.png);
+	content: "";
+	z-index: 5;
+	position: absolute;
+	left: 24px;
+}
+
+[type="checkbox"]:checked + label:before {
+	background-image: url(../images/check_checked.png);
+}

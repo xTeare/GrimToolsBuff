@@ -1,0 +1,24 @@
+.gd-button {
+	width: 168px;
+	height: 42px;
+	left: 0;
+	top: 0;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(../images/buttonlarge01_up.png);
+	background-size: cover;
+	border: none;
+	display: block;
+	font-size: 1.25rem;
+	color: #a98c4e;
+	cursor: pointer;
+	transition: 0.05s;
+}
+
+.gd-button:hover {
+	background-image: url(../images/buttonlarge01_over.png);
+}
+
+.gd-button:active {
+	background-image: url(../images/buttonlarge01_down.png);
+}

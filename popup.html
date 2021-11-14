@@ -1,161 +1,64 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="gd-button.css">
-    <link rel="stylesheet" href="button.css">
-    <link rel="stylesheet" href="checkbox.css">
+    <link rel="stylesheet" href="css/border.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/tabs.css">
   </head>
   <body>
-    <style>
-      body{
-        width: 270px;
-        height: 329px;
-        background-color: #000;
-        margin: 24px;
-        background-image: url(images/background.png);
-        background-size: cover;
-      }
-
-
-      .container{
-        top: 0;
-        left: 0;
-        width: 100%;
-      }
-
-
-      .border-wrapper{
-        float:left;
-        position: fixed;
-        left:0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1000;
-      }
-
-      .lt{
-        left: 0px;
-        top: 0px;
-        position: fixed;
-        float: left;
-        z-index: -1000;
-      }
-
-      .rt{
-        right: 0px;
-        top: 0px;
-        position: fixed;
-        float: left;
-        z-index: -1000;
-      }
-
-      .ct{
-        left: 8px;
-        right: 8px;
-        width: auto;
-        float: left;
-        position: fixed;
-        z-index: -1000;
-      }
-
-      .cb{
-        left: 8px;
-        right: 8px;
-        bottom: 0px;
-        width: auto;
-        float: left;
-        position: fixed;
-        z-index: -1000;
-      }
-
-
-
-      .lm{
-        left: 0px;
-        top: 8px;
-        width: 8px;
-        height: auto;
-        float: left;
-        position: fixed;
-        z-index: -1000;
-      }
-      
-      .rm{
-        right: 0px;
-        top: 8px;
-        width: 8px;
-        height: auto;
-        float: left;
-        position: fixed;
-        z-index: -1000;
-      }
-
-      .rb{
-        right: 0px;
-        bottom: 0px;
-        position: fixed;
-        float: left;
-        z-index: -1000;
-      }
-
-      
-      .lb{
-        left: 0px;
-        bottom: 0px;
-        position: fixed;
-        float: left;
-        z-index: -1000;
-      }
-
-      .rm{
-        right: 0px;
-        top: 8px;
-        bottom: 8px;
-        width: 8px;
-        height: auto;
-        position: fixed;
-        float: left;
-        z-index: -1000;
-      }
-
-
-      .button-group{
-        position: fixed;
-        display: block;
-        height: 56px;
-        bottom: 24px;
-        width: inherit;
-      }
-    </style>
 
     <div class="border-wrapper">
       <img src="images/borderthick_ct.png" width="8px" height="8px" class="ct"/>
       <img src="images/borderthick_cb.png" width="8px" height="8px" class="cb"/>
-
       <img src="images/borderthick_lm.png" width="8px" height="8px" class="lm"/>
       <img src="images/borderthick_rm.png" width="8px" height="8px" class="rm"/>
-
-
-        <img src="images/borderthick_lt.png" width="8px" height="8px" class="lt"/>
-        <img src="images/borderthick_rt.png" width="8px" height="8px" class="rt"/>
-
-        
-        <img src="images/borderthick_lb.png" width="8px" height="8px" class="lb"/>
-        <img src="images/borderthick_rb.png" width="8px" height="8px" class="rb"/>
+      <img src="images/borderthick_lt.png" width="8px" height="8px" class="lt"/>
+      <img src="images/borderthick_rt.png" width="8px" height="8px" class="rt"/>
+      <img src="images/borderthick_lb.png" width="8px" height="8px" class="lb"/>
+      <img src="images/borderthick_rb.png" width="8px" height="8px" class="rb"/>
     </div>
 
-
-    <input type="checkbox" id="cb_hideSupport">
-    <label for="cb_hideSupport">Hide Support Button</label>
-
-    <input type="checkbox" id="cb_fullscreenMode">
-    <label for="cb_fullscreenMode">Fullscreen Mode</label>
-
-
+    <div class="tab">
+      <button id="tabBtn-item-db" class="tablinks">Item DB</button>
+      <button id="tabBtn-map" class="tablinks">Map</button>
+    </div>
+    
+    
+    <div id="tab-item-db" class="tabcontent">
+      <div class="input-group">
+        <input type="checkbox" id="cb_itemHideSupport" >
+        <label for="cb_itemHideSupport">Hide support button</label>
+        <span class="tooltiptext">Hides the support button</span>
+      </div>
+      <div class="input-group">
+        <input type="checkbox" id="cb_itemFullscreenMode">
+        <label for="cb_itemFullscreenMode">Fullscreen Mode</label>
+        <span class="tooltiptext">Removes the space used for ads and enlages the main content</span>
+      </div>
+      <div class="input-group">
+        <input type="checkbox" id="cb_scrollHelper">
+        <label for="cb_scrollHelper">Add ScrollHelper</label>
+        <span class="tooltiptext">Add a scroll button to scroll up / down</span>
+      </div>
+    </div>
+    
+    <div id="tab-map" class="tabcontent">
+      <div class="input-group">
+        <input type="checkbox" id="cb_mapFullscreenMode">
+        <label for="cb_mapFullscreenMode">Fullscreen Mode</label>
+        <span class="tooltiptext">Removes the space used for ads and enlages the main content</span>
+      </div>
+      <div class="input-group">
+        <input type="checkbox" id="cb_mapHideSupport" >
+        <label for="cb_mapHideSupport">Hide support button</label>
+        <span class="tooltiptext">Hides the support button</span>
+      </div>
+    </div>
     <div class="button-group">
       <button id="reload" class="gd-button">Reload !</button>
     </div>
-    <script src="popup.js"></script>
+    <script src="js/popup.js"></script>
   </body>
 </html>
