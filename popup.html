@@ -9,36 +9,43 @@
   </head>
   <body>
     <div class="border-wrapper">
-      <img src="images/borderthick_ct.png" width="8px" height="8px" class="ct"/>
-      <img src="images/borderthick_cb.png" width="8px" height="8px" class="cb"/>
-      <img src="images/borderthick_lm.png" width="8px" height="8px" class="lm"/>
-      <img src="images/borderthick_rm.png" width="8px" height="8px" class="rm"/>
-      <img src="images/borderthick_lt.png" width="8px" height="8px" class="lt"/>
-      <img src="images/borderthick_rt.png" width="8px" height="8px" class="rt"/>
-      <img src="images/borderthick_lb.png" width="8px" height="8px" class="lb"/>
-      <img src="images/borderthick_rb.png" width="8px" height="8px" class="rb"/>
+      <img src="images/borderthick_ct.png" class="ct"/>
+      <img src="images/borderthick_cb.png" class="cb"/>
+      <img src="images/borderthick_lm.png" class="lm"/>
+      <img src="images/borderthick_rm.png" class="rm"/>
+      <img src="images/borderthick_lt.png" class="lt"/>
+      <img src="images/borderthick_rt.png" class="rt"/>
+      <img src="images/borderthick_lb.png" class="lb"/>
+      <img src="images/borderthick_rb.png" class="rb"/>
     </div>
     <div class="tab">
       <button id="tabBtn-item-db" class="tablinks">Item DB</button>
       <button id="tabBtn-map" class="tablinks">Map</button>
     </div>
+    <!-- ITEM DB -->
     <div id="tab-item-db" class="tabcontent">
-      <div class="input-group">
-        <input type="checkbox" id="cb_itemHideSupport" >
-        <label for="cb_itemHideSupport">Hide support button</label>
-        <span class="tooltiptext">Hides the support button</span>
-      </div>
       <div class="input-group">
         <input type="checkbox" id="cb_itemFullscreenMode">
         <label for="cb_itemFullscreenMode">Fullscreen Mode</label>
         <span class="tooltiptext">Removes the space used for ads and enlages the main content</span>
       </div>
       <div class="input-group">
+        <input type="checkbox" id="cb_itemHideSupport">
+        <label for="cb_itemHideSupport">Hide support button</label>
+        <span class="tooltiptext">Hides the support button</span>
+      </div>
+      <div class="input-group">
         <input type="checkbox" id="cb_scrollHelper">
         <label for="cb_scrollHelper">Add ScrollHelper</label>
         <span class="tooltiptext">Add a scroll button to scroll up / down</span>
       </div>
+      <div class="input-group">
+        <input type="checkbox" id="cb_chipSearch">
+        <label for="cb_chipSearch">Chip Search</label>
+        <span class="tooltiptext">Adds an chip search bar</span>
+      </div>
     </div>
+    <!-- MAP -->
     <div id="tab-map" class="tabcontent">
       <div class="input-group">
         <input type="checkbox" id="cb_mapFullscreenMode">

@@ -8,14 +8,21 @@
   },
   "permissions": ["activeTab", "scripting", "storage"],
 
-  "content_scripts": [{
-    "js": ["js/item-db.js"],
-    "run_at": "document_end",
-    "matches": ["*://*.grimtools.com/db/*" ]
-  },
-  {
-    "js": ["js/map.js"],
-    "run_at": "document_end",
-    "matches": ["*://*.grimtools.com/map/*" ]
-  }]
+  "content_scripts": [
+    {
+      "css": ["css/item-db.css"],
+      "run_at": "document_start",
+      "matches": ["*://*.grimtools.com/db/*" ]
+    },
+    {
+      "js": ["js/item-db.js"],
+      "run_at": "document_end",
+      "matches": ["*://*.grimtools.com/db/*" ]
+    },
+    {
+      "js": ["js/map.js"],
+      "run_at": "document_end",
+      "matches": ["*://*.grimtools.com/map/*" ]
+    }
+  ]
 }

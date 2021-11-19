@@ -1,19 +1,20 @@
 const btn_Reload = document.getElementById("reload");
-const cb_mapHideSupport = document.getElementById("cb_mapHideSupport");
+
+const tabBtn_item_db = document.getElementById("tabBtn-item-db");
+const cb_chipSearch = document.getElementById("cb_chipSearch");
 const cb_itemHideSupport = document.getElementById("cb_itemHideSupport");
 const cb_itemFullscreenMode = document.getElementById("cb_itemFullscreenMode");
 const cb_scrollHelper = document.getElementById("cb_scrollHelper");
-const cb_mapFullscreenMode = document.getElementById("cb_mapFullscreenMode");
-const tabBtn_item_db = document.getElementById("tabBtn-item-db");
-const tabBtn_map = document.getElementById("tabBtn-map");
 
-let hideSupp = true;
-let fsMode = true;
+const tabBtn_map = document.getElementById("tabBtn-map");
+const cb_mapFullscreenMode = document.getElementById("cb_mapFullscreenMode");
+const cb_mapHideSupport = document.getElementById("cb_mapHideSupport");
 
 let somethingChanged = false;
 
 let settings = {
     "itemHideSupport" : true,
+    "itemChipSearch" : true,
     "maphideSupport" : true,
     "itemFullscreenMode" : true,
     "mapFullscreenMode" : true,
@@ -79,6 +80,7 @@ function setCheckboxState(){
     cb_itemFullscreenMode.checked = settings["itemFullscreenMode"];
     cb_scrollHelper.checked = settings["scrollHelper"];
     cb_mapFullscreenMode.checked = settings["mapFullscreenMode"];
+    cb_chipSearch.checked = settings["itemChipSearch"];
 }
 
 function setupEvents(){
@@ -100,6 +102,11 @@ function setupEvents(){
 
     cb_itemFullscreenMode.addEventListener("click", async () => {
         settings["itemFullscreenMode"] = !settings["itemFullscreenMode"];
+        saveSettings();
+    });
+
+    cb_chipSearch.addEventListener("click", async () => {
+        settings["itemChipSearch"] = !settings["itemChipSearch"];
         saveSettings();
     });
 
