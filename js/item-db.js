@@ -175,6 +175,8 @@ function addAsChip(element){
     let text = element.innerText;
     generateChip(text);
     autoCompleteList.removeChild(element);
+    searchBox.value = '';
+    generateHints('');
 }
 
 function findHints(searchTerm){
