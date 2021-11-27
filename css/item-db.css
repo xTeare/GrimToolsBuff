@@ -4,11 +4,36 @@
 	margin: 4px;
 	height: 24px;
 	font-size: 1rem;
-	line-height: 24px;
+	line-height: 23px;
 	border-radius: 25px;
 	border: 1px solid #332f2c;
 	background-color: #171614;
 	color: #f9c85a;
+}
+
+.term-highlight {
+	color: #f9c85a;
+	background-color: #33322D;
+}
+
+.search-button {
+	position: absolute;
+	display: block;
+	width: 235px;
+	height: 26px;
+	top: 0px;
+	left: 26px;
+	font-size: 16px;
+	line-height: 27px;
+	border-right: 1px solid #332f2c;
+	background-color: #090909;
+	color: #9c9c90;
+	transition: all 200ms ease;
+}
+
+.search-button:hover {
+	color: #f9c85a;
+	background-color: #0f0d0c;
 }
 
 .chip-close {
@@ -43,9 +68,12 @@
 .chip-box-clear {
 	color: #9c9c90;
 	display: block;
-	float: right;
-	right: 0;
+	position: absolute;
+	float: left;
 	font-size: 1rem;
+	margin-bottom: 7px;
+	top: 230px;
+	left: 222px;
 }
 
 .chip-box-clear:hover {
@@ -68,13 +96,14 @@
 	width: 260px;
 	height: 210px;
 	float: left;
-	margin-right: 8px;
+	border-right: 1px solid #332f2c;
 }
 
 .auto-complete-wrapper {
 	height: 210px;
 	overflow-x: hidden;
 	margin: 0 8px 0 0;
+	padding-left: 4px;
 }
 
 .hint {
@@ -83,7 +112,7 @@
 	line-height: 32px;
 	border: 1px solid #332f2c;
 	padding: 0 8px;
-	transition: background-color 120ms ease;
+	transition: background-color 200ms ease;
 	margin: 0 8px 10px 8px;
 }
 

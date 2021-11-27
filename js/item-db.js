@@ -2,6 +2,7 @@ const scroller = document.getElementById('item-list');
 const divMove = document.createElement('div');
 const searchBox = document.createElement('input');
 const searchIcon = document.createElement('span');
+const searchButton = document.createElement('span');
 const searchWrapper = document.createElement('div');
 const chipBox = document.createElement('div');
 const chipBoxClear = document.createElement('div');
@@ -40,7 +41,7 @@ chrome.storage.sync.get('settings', function(data) {
         do {
             console.log(targetElement);
 
-            if(targetElement == searchBox || targetElement == chipBox){
+            if(targetElement == searchBox || targetElement == chipBox || targetElement == searchButton || targetElement == searchIcon){
                 return;
             }
 
@@ -136,9 +137,28 @@ function addScrollHelper(){
     document.getElementsByClassName('rarity-selector')[0].appendChild(divMove); 
 }
 
-function generateSearchHint(match){
+function generateSearchHint(match, searchTerm){
     var hint = document.createElement('div');
-    hint.innerText = match;
+    var index = match.indexOf(searchTerm);
+    var innerHTML = "";
+
+    if (index >= 0) { 
+
+        if( index == 0){
+            innerHTML = "<span class='term-highlight'>" + searchTerm +  "</span>" + match.substring(searchTerm.length);
+        }
+        else{
+            innerHTML = match.substring(0,index) + "<span class='term-highlight'>" +  match.substring(index,index+searchTerm.length) +  "</span>" +  match.substring(index + searchTerm.length);
+        }
+        
+        hint.innerHTML = innerHTML;
+    }
+    else{
+
+        hint.innerText = match;
+    }
+
+
     hint.classList.add('hint');
     autoCompleteList.appendChild(hint);
 
@@ -178,7 +198,7 @@ function generateHints(searchTerm){
     let matches = findHints(searchTerm);
 
     matches.forEach((matchValue) => {
-        generateSearchHint(matchValue);
+        generateSearchHint(matchValue, searchTerm);
     });
 
 }
@@ -190,11 +210,18 @@ function clearHints(){
 }
 
 function generateSearch(){
+    setChipBoxVisibility('hidden');
     document.getElementsByClassName('bar-mid')[0].appendChild(searchWrapper);
     document.getElementsByClassName('input-block')[0].style.display = 'none';
-    searchBox.classList.add('input');
 
+    searchBox.classList.add('input');
+    searchBox.style.paddingLeft = '268px';
+    searchBox.placeholder = 'Enter search terms ...';
     searchIcon.classList.add('search-icon');
+
+    searchButton.innerText = 'Search !';
+    searchButton.classList.add('search-button');
+
     chipBoxClear.classList.add('chip-box-clear');
     searchWrapper.classList.add('input-block');
     chipBoxClear.innerText = 'clear';
@@ -244,9 +271,15 @@ function generateSearch(){
           }
     });
 
+    searchButton.addEventListener('click', () => {
+        performSearch();
+        setChipBoxVisibility('hidden');
+    });
+
     chipBox.appendChild(chipBoxClear);
     searchWrapper.appendChild(searchBox);
     searchWrapper.appendChild(searchIcon);
+    searchWrapper.appendChild(searchButton);
     searchWrapper.appendChild(chipBox);
 }
 
