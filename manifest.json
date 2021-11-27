@@ -6,8 +6,11 @@
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["activeTab", "scripting", "storage"],
-
+  "permissions": ["activeTab", "scripting", "storage", "tabs"],
+  "host_permissions": [
+      "<all_urls>",
+      "*://*/*"
+  ],
   "content_scripts": [
     {
       "css": ["css/item-db.css"],
@@ -24,5 +27,14 @@
       "run_at": "document_end",
       "matches": ["*://*.grimtools.com/map/*" ]
     }
+  ],
+  "web_accessible_resources": 
+  [ 
+    {
+      "resources": [ "data/gamedata.json" ],
+      "matches": ["<all_urls>"],
+      "extension_ids": []
+      
+    } 
   ]
 }
