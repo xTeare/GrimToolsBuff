@@ -1,5 +1,5 @@
-const scroller = document.getElementById("item-list");
-const divMove = document.createElement("div");
+const scroller = document.getElementById('item-list');
+const divMove = document.createElement('div');
 const searchBox = document.createElement('input');
 const searchIcon = document.createElement('span');
 const searchWrapper = document.createElement('div');
@@ -11,49 +11,66 @@ const chipList = document.createElement('ul');
 const autoCompleteList = document.createElement('div');
 
 let chips = [];
+let gameData = []
 
-let gameData = [
-    "Resistances",
-    "Fire",
-    "Lightning",
-    "Cold",
-    "Poison & Acid",
-    "Piercing",
-    "Bleeding",
-    "Vitality",
-    "Aether",
-    "Stun",
-    "Chaos",
-]
+fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gamdata.json')
+  .then(response => response.json())
+  .then(data => {
+    gameData = data.gameData;
+  });
+
 
 let settings = {
-    "itemHideSupport" : true,
-    "itemChipSearch" : true,
-    "maphideSupport" : true,
-    "itemFullscreenMode" : true,
-    "mapFullscreenMode" : true,
-    "scrollHelper" : true,
-    "lastTab": "tab-item-db"
+    'itemHideSupport' : true,
+    'itemChipSearch' : true,
+    'maphideSupport' : true,
+    'itemFullscreenMode' : true,
+    'mapFullscreenMode' : true,
+    'scrollHelper' : true,
+    'lastTab': 'tab-item-db'
 }
 
-chrome.storage.sync.get("settings", function(data) {
+chrome.storage.sync.get('settings', function(data) {
     settings = data.settings;
     applyChanges();
 
+    document.addEventListener("click", function(evt) {
+        let targetElement = evt.target;
+
+        do {
+            console.log(targetElement);
+
+            if(targetElement == searchBox || targetElement == chipBox){
+                return;
+            }
+
+            if(targetElement != document){
+                if(targetElement.classList.contains('chip-close') || targetElement.classList.contains('hint') || targetElement.classList.contains('chip-box-clear')){
+                    return;
+                }
+            }
+
+
+            targetElement = targetElement.parentNode;
+        } 
+        while (targetElement);
+    
+        setChipBoxVisibility('hidden');
+    });
 });
 
 function applyChanges(){
     
-    if(settings["itemFullscreenMode"]){
+    if(settings['itemFullscreenMode']){
         doFullscreenMode();
     }
-    if(settings["itemHideSupport"]){
+    if(settings['itemHideSupport']){
         removeSupportButton();
     }
-    if(settings["scrollHelper"]){
+    if(settings['scrollHelper']){
         addScrollHelper();
     }
-    if(settings["itemChipSearch"]){
+    if(settings['itemChipSearch']){
         generateSearch();
     }
 }
@@ -68,7 +85,7 @@ function performSearch(){
     chips.forEach((value, index, array) => {
         searchTerms += '"' + value + '"';
         if(index != chips.length - 1){
-            searchTerms += " ";
+            searchTerms += ' ';
         }
     });
 
@@ -77,45 +94,46 @@ function performSearch(){
 }
 
 function doFullscreenMode(){
-    document.getElementById("item-db-right").parentElement.remove();
-    document.getElementById("item-db-left").parentElement.remove();
+    document.getElementById('item-db-right').parentElement.remove();
+    document.getElementById('item-db-left').parentElement.remove();
     
-    var content = document.getElementById("content");
-    content.classList.remove("web");
-    content.style.marginTop = "0px";
+    var content = document.getElementById('content');
+    content.classList.remove('web');
+    content.style.marginTop = '0px';
+    content.style.top = '32px';
 
-    document.getElementsByClassName("header centered")[0].remove();
+    document.getElementsByClassName('header centered')[0].remove();
 }
 
 function removeSupportButton(){
-    document.getElementsByClassName("btn-support")[0].remove();
+    document.getElementsByClassName('btn-support')[0].remove();
 }
 
 function move(scroller){
-    if(divMove.innerText == "▲"){
+    if(divMove.innerText == '▲'){
         scroller.scroll({ top: 0 });
-        divMove.innerText = "▼";
+        divMove.innerText = '▼';
     }
     else{
         scroller.scroll({ top: scroller.scrollHeight });
-        divMove.innerText = "▲";
+        divMove.innerText = '▲';
     }
 
-    divMove.classList.add("selected");
+    divMove.classList.add('selected');
 }
 
 function addScrollHelper(){
-    divMove.id= "div-to-down";
-    divMove.innerText = "▼"
-    divMove.classList.add("tab");
-    divMove.classList.add("legendary");
-    divMove.classList.add("selected");
-    divMove.style.fontSize = "2em";
-    divMove.style.lineHeight = "0.5em";
-    divMove.style.opacity = "0.75";
+    divMove.id= 'div-to-down';
+    divMove.innerText = '▼'
+    divMove.classList.add('tab');
+    divMove.classList.add('legendary');
+    divMove.classList.add('selected');
+    divMove.style.fontSize = '2em';
+    divMove.style.lineHeight = '0.5em';
+    divMove.style.opacity = '0.75';
     divMove.onclick = function () { move(scroller); }
 
-    document.getElementsByClassName("rarity-selector")[0].appendChild(divMove); 
+    document.getElementsByClassName('rarity-selector')[0].appendChild(divMove); 
 }
 
 function generateSearchHint(match){
@@ -125,10 +143,10 @@ function generateSearchHint(match){
     autoCompleteList.appendChild(hint);
 
     hint.addEventListener('click', (event) => {
-        if(chips.find(e => e.toLowerCase() === value.toLowerCase())){
+        if(chips.find(e => e.toLowerCase() === event.target.innerText.toLowerCase())){
             return;
         }
-        
+
         addAsChip(event.target);
     });
 }
@@ -175,6 +193,7 @@ function generateSearch(){
     document.getElementsByClassName('bar-mid')[0].appendChild(searchWrapper);
     document.getElementsByClassName('input-block')[0].style.display = 'none';
     searchBox.classList.add('input');
+
     searchIcon.classList.add('search-icon');
     chipBoxClear.classList.add('chip-box-clear');
     searchWrapper.classList.add('input-block');
@@ -203,10 +222,6 @@ function generateSearch(){
     searchBox.addEventListener('focusin', () =>{
         setChipBoxVisibility('visible');
     });
-
-    searchBox.addEventListener('focusout', () =>{
-            // setChipBoxVisibility('hidden');
-    });
     
     searchBox.addEventListener('keydown', event =>{
         if(event.shiftKey && event.key === 'Enter'){
@@ -219,7 +234,7 @@ function generateSearch(){
                 return;
             }
 
-            if(chips.find(e => e.toLowerCase() === value.toLowerCase())){
+            if(chips.find(e => e.toLowerCase() === searchBox.value.toLowerCase())){
                 return;
             }
 
@@ -242,7 +257,6 @@ function clearChipBox(){
         }
      });
     
-    setChipBoxVisibility('hidden');
     chips = [];
 }
 
@@ -251,12 +265,7 @@ function setChipBoxVisibility(value){
 }
 
 function generateChip(value){
-
-    
-
     var li = document.createElement('li');
-    var liId = 'chip' + value;
-    li.id = liId;
 
     var liText = document.createElement('div');
     liText.innerText = value;
@@ -274,9 +283,5 @@ function generateChip(value){
     liClose.addEventListener('click', event => {
         chips.splice(chips.findIndex(e => e == event.currentTarget.parentElement.innerText), 1);
         chipList.removeChild(event.currentTarget.parentElement);
-
-        if(chips.length < 1){
-            setChipBoxVisibility('hidden');
-        }
     })
 }
