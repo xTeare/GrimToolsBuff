@@ -139,13 +139,13 @@ function addScrollHelper(){
 
 function generateSearchHint(match, searchTerm){
     var hint = document.createElement('div');
-    var index = match.indexOf(searchTerm);
+    var index = match.toLowerCase().indexOf(searchTerm.toLowerCase());
     var innerHTML = "";
 
     if (index >= 0) { 
 
         if( index == 0){
-            innerHTML = "<span class='term-highlight'>" + searchTerm +  "</span>" + match.substring(searchTerm.length);
+            innerHTML = "<span class='term-highlight'>" + match.substring(0, searchTerm.length) +  "</span>" + match.substring(searchTerm.length);
         }
         else{
             innerHTML = match.substring(0,index) + "<span class='term-highlight'>" +  match.substring(index,index+searchTerm.length) +  "</span>" +  match.substring(index + searchTerm.length);
