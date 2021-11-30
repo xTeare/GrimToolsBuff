@@ -1,4 +1,6 @@
 const scroller = document.getElementById('item-list');
+const gtSearch = document.getElementById('input-search');
+
 const divMove = document.createElement('div');
 const searchBox = document.createElement('input');
 const searchIcon = document.createElement('span');
@@ -6,8 +8,6 @@ const searchButton = document.createElement('span');
 const searchWrapper = document.createElement('div');
 const chipBox = document.createElement('div');
 const chipBoxClear = document.createElement('div');
-const gtSearch = document.getElementById('input-search');
-
 const chipList = document.createElement('ul');
 const autoCompleteList = document.createElement('div');
 
@@ -18,6 +18,7 @@ fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gamdat
   .then(response => response.json())
   .then(data => {
     gameData = data.gameData;
+    generateHints("");
   });
 
 var settings = {
@@ -40,7 +41,7 @@ chrome.storage.sync.get('settings', function(data) {
         do {
             console.log(targetElement);
 
-            if(targetElement == searchBox || targetElement == chipBox || targetElement == searchButton || targetElement == searchIcon)
+            if(targetElement == searchBox || targetElement == searchButton || targetElement == searchIcon)
                 return;
 
             if(targetElement != document && 
@@ -141,9 +142,9 @@ function generateSearchHint(match, searchTerm){
 
     if (index >= 0) { 
         if( index == 0)
-            innerHTML = "<span class='term-highlight'>" + match.substring(0, searchTerm.length) +  "</span>" + match.substring(searchTerm.length);
+            innerHTML = "<span class='hint-highlight'>" + match.substring(0, searchTerm.length) +  "</span>" + match.substring(searchTerm.length);
         else
-            innerHTML = match.substring(0,index) + "<span class='term-highlight'>" +  match.substring(index,index+searchTerm.length) +  "</span>" +  match.substring(index + searchTerm.length);
+            innerHTML = match.substring(0,index) + "<span class='hint-highlight'>" +  match.substring(index,index+searchTerm.length) +  "</span>" +  match.substring(index + searchTerm.length);
         
         hint.innerHTML = innerHTML;
     }
@@ -175,14 +176,15 @@ function findHints(searchTerm){
     var matches = [];
     var counter = 0;
 
-    gameData.forEach((value) => {
-        if(value.toLowerCase().indexOf(term) !== -1)
+    for(let value of gameData){
+        if(value.toLowerCase().indexOf(term) !== -1){
             counter ++;
             matches.push(value);
+        }
 
-            if(counter >= 200)
-                break;
-    });
+        if(counter >= 200)
+            break;
+    }
 
     matches = matches.filter(element => !chips.find(rm => rm.toLowerCase() === element.toLowerCase()));
 
@@ -277,12 +279,13 @@ function generateSearch(){
 }
 
 function clearChipBox(){
-    Array.from(chipBox.children).forEach(function(item) {
+    Array.from(chipList.children).forEach(function(item) {
         if(item.innerText !== 'clear') 
-            chipBox.removeChild(item);
+            chipList.removeChild(item);
      });
     
     chips = [];
+    generateHints(searchBox.value);
 }
 
 function setChipBoxVisibility(value){
