@@ -11,8 +11,8 @@ const gtSearch = document.getElementById('input-search');
 const chipList = document.createElement('ul');
 const autoCompleteList = document.createElement('div');
 
-let chips = [];
-let gameData = []
+var chips = [];
+var gameData = []
 
 fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gamdata.json')
   .then(response => response.json())
@@ -20,8 +20,7 @@ fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gamdat
     gameData = data.gameData;
   });
 
-
-let settings = {
+var settings = {
     'itemHideSupport' : true,
     'itemChipSearch' : true,
     'maphideSupport' : true,
@@ -41,16 +40,14 @@ chrome.storage.sync.get('settings', function(data) {
         do {
             console.log(targetElement);
 
-            if(targetElement == searchBox || targetElement == chipBox || targetElement == searchButton || targetElement == searchIcon){
+            if(targetElement == searchBox || targetElement == chipBox || targetElement == searchButton || targetElement == searchIcon)
                 return;
-            }
 
-            if(targetElement != document){
-                if(targetElement.classList.contains('chip-close') || targetElement.classList.contains('hint') || targetElement.classList.contains('chip-box-clear')){
+            if(targetElement != document && 
+                (targetElement.classList.contains('chip-close') || 
+                 targetElement.classList.contains('hint') || 
+                 targetElement.classList.contains('chip-box-clear')))
                     return;
-                }
-            }
-
 
             targetElement = targetElement.parentNode;
         } 
@@ -143,36 +140,30 @@ function generateSearchHint(match, searchTerm){
     var innerHTML = "";
 
     if (index >= 0) { 
-
-        if( index == 0){
+        if( index == 0)
             innerHTML = "<span class='term-highlight'>" + match.substring(0, searchTerm.length) +  "</span>" + match.substring(searchTerm.length);
-        }
-        else{
+        else
             innerHTML = match.substring(0,index) + "<span class='term-highlight'>" +  match.substring(index,index+searchTerm.length) +  "</span>" +  match.substring(index + searchTerm.length);
-        }
         
         hint.innerHTML = innerHTML;
     }
     else{
-
         hint.innerText = match;
     }
-
 
     hint.classList.add('hint');
     autoCompleteList.appendChild(hint);
 
     hint.addEventListener('click', (event) => {
-        if(chips.find(e => e.toLowerCase() === event.target.innerText.toLowerCase())){
+        if(chips.find(e => e.toLowerCase() === event.target.innerText.toLowerCase()))
             return;
-        }
 
         addAsChip(event.target);
     });
 }
 
 function addAsChip(element){
-    let text = element.innerText;
+    var text = element.innerText;
     generateChip(text);
     autoCompleteList.removeChild(element);
     searchBox.value = '';
@@ -180,13 +171,17 @@ function addAsChip(element){
 }
 
 function findHints(searchTerm){
-    let term = searchTerm.toLowerCase();
-    let matches = [];
+    var term = searchTerm.toLowerCase();
+    var matches = [];
+    var counter = 0;
 
     gameData.forEach((value) => {
-        if(value.toLowerCase().indexOf(term) !== -1){
+        if(value.toLowerCase().indexOf(term) !== -1)
+            counter ++;
             matches.push(value);
-        }
+
+            if(counter >= 200)
+                break;
     });
 
     matches = matches.filter(element => !chips.find(rm => rm.toLowerCase() === element.toLowerCase()));
@@ -206,9 +201,8 @@ function generateHints(searchTerm){
 }
 
 function clearHints(){
-    while (autoCompleteList.firstChild) {
+    while (autoCompleteList.firstChild)
         autoCompleteList.removeChild(autoCompleteList.firstChild);
-    }
 }
 
 function generateSearch(){
@@ -259,17 +253,14 @@ function generateSearch(){
         }
 
         if (event.isComposing || event.key === 'Enter') {
-            if(searchBox.value === ''){
+            if(searchBox.value === '')
                 return;
-            }
 
-            if(chips.find(e => e.toLowerCase() === searchBox.value.toLowerCase())){
+            if(chips.find(e => e.toLowerCase() === searchBox.value.toLowerCase()))
                 return;
-            }
 
-            var chip = searchBox.value;
+            generateChip(searchBox.value);
             searchBox.value = '';
-            generateChip(chip);
           }
     });
 
@@ -287,9 +278,8 @@ function generateSearch(){
 
 function clearChipBox(){
     Array.from(chipBox.children).forEach(function(item) {
-        if(item.innerText !== 'clear') {
+        if(item.innerText !== 'clear') 
             chipBox.removeChild(item);
-        }
      });
     
     chips = [];
@@ -301,18 +291,16 @@ function setChipBoxVisibility(value){
 
 function generateChip(value){
     var li = document.createElement('li');
-
     var liText = document.createElement('div');
+    var liClose = document.createElement('div');
+
     liText.innerText = value;
     liText.classList.add('chip-text');
 
-    var liClose = document.createElement('div');
     liClose.classList.add('chip-close');
     li.appendChild(liText);
     li.appendChild(liClose);
-
     chipList.appendChild(li);
-
     chips.push(value);
 
     liClose.addEventListener('click', event => {
