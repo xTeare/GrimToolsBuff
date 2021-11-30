@@ -39,9 +39,7 @@ chrome.storage.sync.get('settings', function(data) {
         let targetElement = evt.target;
 
         do {
-            console.log(targetElement);
-
-            if(targetElement == searchBox || targetElement == searchButton || targetElement == searchIcon)
+            if(targetElement == searchBox || targetElement == searchButton || targetElement == searchIcon || targetElement == chipBox)
                 return;
 
             if(targetElement != document && 
