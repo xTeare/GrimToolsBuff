@@ -103,7 +103,7 @@ function doFullscreenMode(){
 }
 
 function removeSupportButton(){
-    document.getElementsByClassName('btn-support')[0].remove();
+    document.getElementsByClassName('btn-support2')[0].remove();
 }
 
 function move(scroller){
