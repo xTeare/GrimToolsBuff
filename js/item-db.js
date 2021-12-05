@@ -14,7 +14,7 @@ const autoCompleteList = document.createElement('div');
 var chips = [];
 var gameData = []
 
-fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gamdata.json')
+fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gamedata.json')
   .then(response => response.json())
   .then(data => {
     gameData = data.gameData;
