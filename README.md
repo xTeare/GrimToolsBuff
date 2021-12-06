@@ -2,7 +2,7 @@
 Adds the posibility to apply some changes to the Item Database and Worldmap of www.grimtools.com
 
 # Usage
-Just download the sourcecode, open your Browser's Extensions page, enable Developer mode and load the root folder of GrimToolsBuff.
+Just download the sourcecode, open your Browser's Extensions page, enable Developer mode and click on `load unpackaged` the root folder of GrimToolsBuff.
 
 # Features
 ## Chip Search
