@@ -22,7 +22,7 @@ function applyChanges(){
 }
 
 function removeSupportButton(){
-    document.getElementsByClassName("btn-support")[0].remove();
+    document.getElementsByClassName("btn-support2")[0].remove();
 }
 
 function doFullscreenMode(){
@@ -30,13 +30,11 @@ function doFullscreenMode(){
     document.getElementById("map-left").parentElement.remove();
     
     var content = document.getElementById("content");
-    content.style.marginTop = "0px";
-    content.style.marginRight = "0px";
-    content.style.marginLeft = "0px";
+    content.style.margin = "0px";
+    content.style.top = "32px";
 
-    var marker_list = document.getElementsByClassName("marker-list")[0];
-
+    var markerList = document.getElementsByClassName("search-list")[0];
     var leftBar = document.getElementsByClassName("left-bar")[0];
-    leftBar.style.left = marker_list.offsetWidth + "px";
+    leftBar.style.left = markerList.offsetWidth + "px";
     leftBar.style.zIndex = "3";
 }
