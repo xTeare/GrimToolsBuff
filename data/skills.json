@@ -1,0 +1,65 @@
+{
+    "classes": {
+        "Soldier": {
+            "associations":[
+                "Blade Arc",
+                "Blitz",
+                "Cadence",
+                "Counter Strike",
+                "Field Command",
+                "Fighting Spirit",
+                "Forcewave",
+                "Markovian's Advantage",
+                "Menhir's Bulwark",
+                "Menhir's Will",
+                "Oleron's Rage",
+                "Overguard",
+                "Shield Training",
+                "War Cry",
+                "Zolhan's Technique",
+                "Demolitionist",
+                "Blackwater Cocktail",
+                "Blast Shield",
+                "Canister Bomb",
+                "Fire Strike",
+                "Flame Touched",
+                "Flashbang",
+                "Grenado",
+                "Mortar Trap",
+                "Stun Jacks",
+                "Thermite Mine",
+                "Vindictive Flame"
+            ]
+        },
+        "Occultist": {
+            "associations":[
+                "Blood of Dreeg",
+                "Bloody Pox",
+                "Bonds of Bysmiel",
+                "Curse of Frailty",
+                "Doom Bolt",
+                "Dreeg's Evil Eye",
+                "Possession",
+                "Sigil of Consumption",
+                "Solael's Witchfire",
+                "Summon Familiar",
+                "Summon Hellhound",
+                "Nightblade",
+                "Amarasta's Blade Burst",
+                "Amarasta's Quick Cut",
+                "Belgothian's Shears",
+                "Blade Barrier",
+                "Blade Spirit",
+                "Blade Trap",
+                "Execution",
+                "Phantasmal Armor",
+                "Phantasmal Blades",
+                "Pneumatic Burst",
+                "Ring of Steel",
+                "Shadow Strike",
+                "Veil of Shadow",
+                "Whirling Death"
+            ]
+        }
+    }
+}
