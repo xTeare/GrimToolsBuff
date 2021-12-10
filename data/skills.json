@@ -16,8 +16,11 @@
                 "Overguard",
                 "Shield Training",
                 "War Cry",
-                "Zolhan's Technique",
-                "Demolitionist",
+                "Zolhan's Technique"
+            ]
+        },
+        "Demolitionist": {
+            "associations":[
                 "Blackwater Cocktail",
                 "Blast Shield",
                 "Canister Bomb",
@@ -43,8 +46,63 @@
                 "Sigil of Consumption",
                 "Solael's Witchfire",
                 "Summon Familiar",
-                "Summon Hellhound",
-                "Nightblade",
+                "Summon Hellhound"
+            ]
+        },
+        "Arcanist": {
+            "associations":[
+                "Albrecht's Aether Ray",
+                "Arcane Will",
+                "Callidor's Tempest",
+                "Devastation",
+                "Iskandra's Elemental Exchange",
+                "Maiven's Sphere of Protection",
+                "Mirror of Ereoctes",
+                "Olexra's Flash Freeze",
+                "Panetti's Replicating Missile",
+                "Reckless Power",
+                "Star Pact",
+                "Trozan's Sky Shard"
+            ]
+        },"Shaman": {
+            "associations":[
+                "Conjure Primal Spirit",
+                "Devouring Swarm",
+                "Feral Hunger",
+                "Grasping Vines",
+                "Mogdrogen's Pact",
+                "Primal Bond",
+                "Primal Strike",
+                "Savagery",
+                "Storm Totem",
+                "Stormcaller's Pact",
+                "Summon Briarthorn",
+                "Upheaval",
+                "Wendigo Totem",
+                "Wind Devil"
+            ]
+        },
+        "Inquisitor": {
+            "associations":[
+                "Aura of Censure",
+                "Aura of Conviction",
+                "Bursting Round",
+                "Chilling Rounds",
+                "Deadly Aim",
+                "Flames of Ignaffar",
+                "Horn of Gandarr",
+                "Inquisitor Seal",
+                "Ranged Expertise",
+                "Rune of Hagarrad",
+                "Rune of Kalastor",
+                "Storm Box of Elgoloth",
+                "Storm Spread",
+                "Word of Pain",
+                "Word of Renewal"
+            ]
+        },
+        "Nightblade": {
+            "associations":[
                 "Amarasta's Blade Burst",
                 "Amarasta's Quick Cut",
                 "Belgothian's Shears",
@@ -59,6 +117,40 @@
                 "Shadow Strike",
                 "Veil of Shadow",
                 "Whirling Death"
+            ]
+        },
+        "Necromancer": {
+            "associations":[
+				"Bone Harvest",
+				"Call of the Grave",
+				"Drain Essence",
+				"Harbinger of Souls",
+				"Ill Omen",
+				"Mark of Torment",
+				"Necrotic Edge",
+				"Raise Skeletons",
+				"Ravenous Earth",
+				"Reap Spirit",
+				"Reaping Strike",
+				"Siphon Souls",
+				"Spectral Binding",
+				"Summon Blight Fiend"
+            ]
+        },
+        "Oathkeeper": {
+            "associations":[
+                "Aegis of Menhir",
+                "Ascension",
+                "Divine Mandate",
+                "Eye of Reckoning",
+                "Judgment",
+                "Presence of Virtue",
+                "Resilience",
+                "Righteous Fervor",
+                "Shattering Smash",
+                "Smite",
+                "Summon Guardian of Empyrion",
+                "Vire's Might"
             ]
         }
     }

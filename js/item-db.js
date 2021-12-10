@@ -13,9 +13,7 @@ const autoCompleteList = document.createElement('div');
 
 var chips = [];
 var gameData = []
-
-var soldierSkills = [];
-var occultistSkills = [];
+var skillData;
 
 fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gamedata.json')
   .then(response => response.json())
@@ -27,10 +25,7 @@ fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gameda
 fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/skills.json')
 .then(response =>  response.json())
 .then(data => {
-    console.log(data);
-    soldierSkills = data.classes.Soldier.associations;
-    occultistSkills = data.classes.Occultist.associations;
-    console.log(soldierSkills);
+    skillData = data.classes;
 });
 
 
@@ -306,18 +301,65 @@ function generateSearch(){
 }
 
 function getSkillClass(term){
-    for(let skill of soldierSkills){
+    for(let skill of skillData.Soldier.associations){
         if(skill == term){
             return "<span style='color: hsl(228deg 1% 48%);'> (Soldier)</span>";
         }
     }
 
-    for(let skill of occultistSkills){
+    for(let skill of skillData.Demolitionist.associations){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Demolitionist)</span>";
+        }
+    }
+    
+    for(let skill of skillData.Occultist.associations){
         if(skill == term){
             return "<span style='color: hsl(228deg 1% 48%);'> (Occultist)</span>";
         }
     }
+    
+    for(let skill of skillData.Occultist.associations){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Occultist)</span>";
+        }
+    }
+    
+    for(let skill of skillData.Arcanist.associations){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Arcanist)</span>";
+        }
+    }
+    
+    for(let skill of skillData.Shaman.associations){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Shaman)</span>";
+        }
+    }
+    
+    for(let skill of skillData.Inquisitor.associations){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Inquisitor)</span>";
+        }
+    }
+    
+    for(let skill of skillData.Nightblade.associations){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Occultist)</span>";
+        }Nightblade
+    }
+    
+    for(let skill of skillData.Necromancer.associations){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Necromancer)</span>";
+        }
+    }
 
+    for(let skill of skillData.Oathkeeper.associations){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Oathkeeper)</span>";
+        }
+    }
     return undefined;
 }
 
