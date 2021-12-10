@@ -14,12 +14,25 @@ const autoCompleteList = document.createElement('div');
 var chips = [];
 var gameData = []
 
+var soldierSkills = [];
+var occultistSkills = [];
+
 fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gamedata.json')
   .then(response => response.json())
   .then(data => {
     gameData = data.gameData;
     generateHints("");
   });
+
+fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/skills.json')
+.then(response =>  response.json())
+.then(data => {
+    console.log(data);
+    soldierSkills = data.classes.Soldier.associations;
+    occultistSkills = data.classes.Occultist.associations;
+    console.log(soldierSkills);
+});
+
 
 var settings = {
     'itemHideSupport' : true,
@@ -139,22 +152,39 @@ function generateSearchHint(match, searchTerm){
     var innerHTML = "";
 
     if (index >= 0) { 
-        if( index == 0)
+        if( index == 0){
             innerHTML = "<span class='hint-highlight'>" + match.substring(0, searchTerm.length) +  "</span>" + match.substring(searchTerm.length);
-        else
+        }
+        else{
             innerHTML = match.substring(0,index) + "<span class='hint-highlight'>" +  match.substring(index,index+searchTerm.length) +  "</span>" +  match.substring(index + searchTerm.length);
-        
+        }
+
+        var skillClass = getSkillClass(match);
+
+        if(skillClass){
+            innerHTML += skillClass; 
+        }
+
         hint.innerHTML = innerHTML;
     }
     else{
         hint.innerText = match;
     }
-
+    hint.id = match;
     hint.classList.add('hint');
     autoCompleteList.appendChild(hint);
 
     hint.addEventListener('click', (event) => {
-        if(chips.find(e => e.toLowerCase() === event.target.innerText.toLowerCase()))
+        var target = event.target;
+
+        if(event.target.id === undefined){
+            if(event.target.parentElement.id !== undefined){
+                target = event.target.parentElement;
+            }
+            return;
+        }
+
+        if(chips.find(e => e.toLowerCase() === target.id))
             return;
 
         addAsChip(event.target);
@@ -162,8 +192,7 @@ function generateSearchHint(match, searchTerm){
 }
 
 function addAsChip(element){
-    var text = element.innerText;
-    generateChip(text);
+    generateChip(element.id);
     autoCompleteList.removeChild(element);
     searchBox.value = '';
     generateHints('');
@@ -274,6 +303,22 @@ function generateSearch(){
     searchWrapper.appendChild(searchIcon);
     searchWrapper.appendChild(searchButton);
     searchWrapper.appendChild(chipBox);
+}
+
+function getSkillClass(term){
+    for(let skill of soldierSkills){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Soldier)</span>";
+        }
+    }
+
+    for(let skill of occultistSkills){
+        if(skill == term){
+            return "<span style='color: hsl(228deg 1% 48%);'> (Occultist)</span>";
+        }
+    }
+
+    return undefined;
 }
 
 function clearChipBox(){

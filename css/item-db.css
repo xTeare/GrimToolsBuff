@@ -97,12 +97,17 @@
 }
 
 .hint:hover {
-	color: #ffdf93;
+	color: hsl(42, 70%, 65%);
 	cursor: pointer;
 }
 
 .hint-highlight {
-	color: #ffdf93;
+	color: hsl(42, 70%, 65%);
+}
+
+.hint-class-highlight {
+	color: #a7927a;
+	pointer-events: none;
 }
 
 .chip-list-wrapper ul {
