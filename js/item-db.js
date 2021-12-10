@@ -175,18 +175,17 @@ function generateSearchHint(match, searchTerm){
 
     hint.addEventListener('click', (event) => {
         var target = event.target;
-
-        if(event.target.id === undefined){
-            if(event.target.parentElement.id !== undefined){
+        
+        if(event.target.id == ""){
+            if(event.target.parentElement.id != undefined){
                 target = event.target.parentElement;
             }
-            return;
         }
 
         if(chips.find(e => e.toLowerCase() === target.id))
             return;
 
-        addAsChip(event.target);
+        addAsChip(target);
     });
 }
 
