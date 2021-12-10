@@ -323,12 +323,6 @@ function getSkillClass(term){
         }
     }
     
-    for(let skill of skillData.Occultist.associations){
-        if(skill == term){
-            return "<span style='color: hsl(228deg 1% 48%);'> (Occultist)</span>";
-        }
-    }
-    
     for(let skill of skillData.Arcanist.associations){
         if(skill == term){
             return "<span style='color: hsl(228deg 1% 48%);'> (Arcanist)</span>";
@@ -350,7 +344,7 @@ function getSkillClass(term){
     for(let skill of skillData.Nightblade.associations){
         if(skill == term){
             return "<span style='color: hsl(228deg 1% 48%);'> (Occultist)</span>";
-        }Nightblade
+        }
     }
     
     for(let skill of skillData.Necromancer.associations){

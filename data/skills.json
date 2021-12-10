@@ -64,7 +64,8 @@
                 "Star Pact",
                 "Trozan's Sky Shard"
             ]
-        },"Shaman": {
+        },
+        "Shaman": {
             "associations":[
                 "Conjure Primal Spirit",
                 "Devouring Swarm",
