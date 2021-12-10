@@ -19,13 +19,17 @@ fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/gameda
   .then(response => response.json())
   .then(data => {
     gameData = data.gameData;
-    generateHints("");
-  });
-
-fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/skills.json')
+  })
+  .then(() => {
+      return fetch('https://raw.githubusercontent.com/xTeare/GrimToolsBuff/master/data/skills.json');
+    }
+  )
 .then(response =>  response.json())
 .then(data => {
     skillData = data.classes;
+    console.log(gameData);
+    console.log(skillData);
+    generateHints('');
 });
 
 
